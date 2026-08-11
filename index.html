@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ASN — Academic Support Network | Parkway West</title>
+<meta name="description" content="ASN is a new student-run club at Parkway West. Help teachers out, earn verified service hours, and build positive relationships with teachers.">
+<link rel="icon" type="image/png" href="asn-logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Graduate&family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script>document.documentElement.classList.add('js');</script>
+<script src="links.js?v=3" defer></script>
+<script src="nav.js?v=3" defer></script>
+<script src="events.js?v=3" defer></script>
+</head>
+<body>
+
+<!-- Top Announcement Ribbon -->
+<div class="ribbon" role="region" aria-label="Announcement">
+  <div class="ribbon-inner">
+    <span class="ribbon-text">Brand new club · New members welcome for 2026–27</span>
+  </div>
+</div>
+
+<!-- Main Header / Navigation -->
+<header class="nav">
+  <div class="nav-inner">
+    <a class="nav-brand" href="/" aria-label="Academic Support Network home">
+      <img src="asn-logo.png" alt="" width="38" height="38">
+      <div class="brand-text">
+        <span class="brand-acronym">ASN</span>
+      </div>
+    </a>
+
+    <button class="nav-toggle" data-menu-toggle aria-expanded="false" aria-controls="nav-sheet" aria-label="Open menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+        <line x1="3" y1="6" x2="21" y2="6"></line>
+        <line x1="3" y1="12" x2="21" y2="12"></line>
+        <line x1="3" y1="18" x2="21" y2="18"></line>
+      </svg>
+    </button>
+
+    <nav class="nav-links" aria-label="Main navigation">
+      <a href="/" class="active">Home</a>
+      <a href="how-it-works.html">How it works</a>
+      <a href="about.html">About us</a>
+      <a href="calendar.html">Calendar</a>
+      <a href="events.html">Events</a>
+      <a class="nav-cta" href="#" data-form="join">Join</a>
+    </nav>
+  </div>
+</header>
+
+<!-- Mobile slide-in menu -->
+<div class="nav-scrim" data-menu-scrim></div>
+<aside class="nav-sheet" id="nav-sheet" data-menu-sheet aria-hidden="true" aria-label="Menu">
+  <div class="nav-sheet-head">
+    <span class="nav-brand" aria-hidden="true">
+      <img src="asn-logo.png" alt="" width="34" height="34">
+      <span class="brand-acronym">ASN</span>
+    </span>
+    <button class="nav-sheet-close" data-menu-close aria-label="Close menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
+  </div>
+  <div class="nav-sheet-divider"></div>
+  <nav class="nav-sheet-links" aria-label="Mobile navigation">
+    <a href="/" class="active">Home</a>
+    <a href="how-it-works.html">How it works</a>
+    <a href="about.html">About us</a>
+    <a href="calendar.html">Calendar</a>
+    <a href="events.html">Events</a>
+  </nav>
+  <div class="nav-sheet-cta">
+    <a class="btn btn-primary" href="#" data-form="join">Join our club</a>
+    <a class="btn btn-secondary" href="#" data-form="request">Request help</a>
+  </div>
+</aside>
+
+<main>
+
+  <!-- ================= HERO ================= -->
+  <section class="hero">
+    <div class="hero-container">
+      <h1 class="display" data-reveal>Supporting Teachers.<br><span class="l2">Empowering Students.</span></h1>
+      <p class="sub" data-reveal>
+        We're a new club where students give teachers a hand with the stuff that
+        eats up their day.
+      </p>
+      <div data-reveal>
+        <div class="btn-row">
+          <a class="btn btn-primary" href="#" data-form="join">Join our club</a>
+          <a class="btn btn-secondary" href="#" data-form="request">Request help</a>
+        </div>
+        <p class="form-note" aria-live="polite">The form isn't live yet. Check back soon!</p>
+      </div>
+
+      <!-- ================= UPCOMING EVENTS ================= -->
+      <div class="upcoming" data-reveal>
+        <div class="upcoming-head">
+          <h2>Upcoming events</h2>
+          <a class="upcoming-all" href="events.html">All events &rarr;</a>
+        </div>
+        <div id="upcomingEvents">
+          <p class="upcoming-empty">Loading events…</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <svg class="horn-divider" viewBox="0 0 1440 64" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0,10 C240,58 480,58 720,30 C960,2 1200,2 1440,50 L1440,64 L0,64 Z" fill="#7B1E3A" opacity="0.14"/>
+    <path d="M0,24 C240,64 480,64 720,38 C960,12 1200,12 1440,58 L1440,64 L0,64 Z" fill="#85A9D6" opacity="0.35"/>
+  </svg>
+
+  <!-- ================= WHY JOIN ================= -->
+  <section id="why-join" class="section-padded">
+    <div class="wrap">
+      <div class="section-header" data-reveal>
+        <p class="section-label">Why join?</p>
+        <h2>Real talk: what's in it for you</h2>
+      </div>
+      <div class="card-grid" data-reveal-group>
+        <div class="card" data-reveal>
+          <div class="card-icon" aria-hidden="true">⏱️</div>
+          <h3>Service hours</h3>
+          <p>Volunteer hours you earn right here at school, verified by the teachers you help.</p>
+        </div>
+        <div class="card" data-reveal>
+          <div class="card-icon" aria-hidden="true">🎓</div>
+          <h3>College applications</h3>
+          <p>Being a member of a service club is a strong line on any application.</p>
+        </div>
+        <div class="card" data-reveal>
+          <div class="card-icon" aria-hidden="true">🤝</div>
+          <h3>Dive into the community</h3>
+          <p>Meet people who want to elevate the environment at Parkway West.</p>
+        </div>
+        <div class="card" data-reveal>
+          <div class="card-icon" aria-hidden="true">⭐</div>
+          <h3>Stronger teacher connections</h3>
+          <p>It matters that teachers know your name when you need advice or a recommendation letter someday.</p>
+        </div>
+        <div class="card" data-reveal>
+          <div class="card-icon" aria-hidden="true">🗓️</div>
+          <h3>Barely a time commitment</h3>
+          <p>About one meeting a month. It fits around sports, jobs, and everything else already filling your week.</p>
+        </div>
+      </div>
+      <div class="center-action" data-reveal>
+        <a class="more-link" href="how-it-works.html">See how it works &rarr;</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= QUICK ABOUT ================= -->
+  <section class="network">
+    <div class="wrap network-content" data-reveal>
+      <p class="section-label light">The idea</p>
+      <h2>One simple model</h2>
+      <p class="section-intro">
+        Students help teachers before school, during Ac-Lab, and after school.
+        You earn concrete service hours that the teachers you help sign off on,
+        and that go straight onto any application you write.
+      </p>
+      <a class="more-link light-link" href="about.html">Meet the three of us &rarr;</a>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap footer-wrap">
+    <div>
+      <div class="brand">Academic Support Network</div>
+      <div class="tagline">Supporting Teachers. Empowering Students.</div>
+    </div>
+    <div class="footer-meta">Parkway West High School</div>
+  </div>
+</footer>
+
+</body>
+</html>
