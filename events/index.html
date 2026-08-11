@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Events — ASN | Parkway West</title>
+<meta name="description" content="Club events for the Academic Support Network at Parkway West: meetings, fundraisers, and everything else on the calendar.">
+<link rel="icon" type="image/png" href="asn-logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Graduate&family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script>document.documentElement.classList.add('js');</script>
+<script src="links.js?v=3" defer></script>
+<script src="nav.js?v=3" defer></script>
+<script src="events.js?v=3" defer></script>
+</head>
+<body>
+
+<div class="ribbon" role="region" aria-label="Announcement">
+  <div class="ribbon-inner">
+    <span class="ribbon-text">Brand new club · New members welcome for 2026–27</span>
+  </div>
+</div>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a class="nav-brand" href="index.html" aria-label="Academic Support Network home">
+      <img src="asn-logo.png" alt="" width="38" height="38">
+      <div class="brand-text">
+        <span class="brand-acronym">ASN</span>
+      </div>
+    </a>
+
+    <button class="nav-toggle" data-menu-toggle aria-expanded="false" aria-controls="nav-sheet" aria-label="Open menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+        <line x1="3" y1="6" x2="21" y2="6"></line>
+        <line x1="3" y1="12" x2="21" y2="12"></line>
+        <line x1="3" y1="18" x2="21" y2="18"></line>
+      </svg>
+    </button>
+
+    <nav class="nav-links" aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="how-it-works.html">How it works</a>
+      <a href="about.html">About us</a>
+      <a href="calendar.html">Calendar</a>
+      <a href="events.html" class="active">Events</a>
+      <a class="nav-cta" href="#" data-form="join">Join</a>
+    </nav>
+  </div>
+</header>
+
+<div class="nav-scrim" data-menu-scrim></div>
+<aside class="nav-sheet" id="nav-sheet" data-menu-sheet aria-hidden="true" aria-label="Menu">
+  <div class="nav-sheet-head">
+    <span class="nav-brand" aria-hidden="true">
+      <img src="asn-logo.png" alt="" width="34" height="34">
+      <span class="brand-acronym">ASN</span>
+    </span>
+    <button class="nav-sheet-close" data-menu-close aria-label="Close menu">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
+  </div>
+  <div class="nav-sheet-divider"></div>
+  <nav class="nav-sheet-links" aria-label="Mobile navigation">
+    <a href="index.html">Home</a>
+    <a href="how-it-works.html">How it works</a>
+    <a href="about.html">About us</a>
+    <a href="calendar.html">Calendar</a>
+    <a href="events.html" class="active">Events</a>
+  </nav>
+  <div class="nav-sheet-cta">
+    <a class="btn btn-primary" href="#" data-form="join">Join our club</a>
+    <a class="btn btn-secondary" href="#" data-form="request">Request help</a>
+  </div>
+</aside>
+
+<main>
+
+  <div class="page-head">
+    <h1 data-reveal>Events</h1>
+    <p data-reveal>Meetings, fundraisers, and everything else the club has coming up.</p>
+  </div>
+
+  <svg class="horn-divider" viewBox="0 0 1440 64" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0,10 C240,58 480,58 720,30 C960,2 1200,2 1440,50 L1440,64 L0,64 Z" fill="#7B1E3A" opacity="0.14"/>
+    <path d="M0,24 C240,64 480,64 720,38 C960,12 1200,12 1440,58 L1440,64 L0,64 Z" fill="#85A9D6" opacity="0.35"/>
+  </svg>
+
+  <section class="events-section">
+    <div class="wrap">
+      <div class="events-toolbar">
+        <p class="section-label">All events</p>
+        <button class="btn-add-event" id="createEventBtn">+ Create event</button>
+      </div>
+
+      <p class="events-notice" id="eventsNotice" role="alert" hidden></p>
+
+      <div id="eventsList">
+        <p class="upcoming-empty">Loading events…</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="final-cta">
+    <div class="wrap">
+      <div class="cta-card-wrapper" data-reveal>
+        <h2>Want in?</h2>
+        <p>Members get a real say in what ASN becomes. That could be you.</p>
+        <div class="btn-row">
+          <a class="btn btn-primary" href="#" data-form="join">Join our club</a>
+          <a class="btn btn-secondary" href="#" data-form="request">Request help</a>
+        </div>
+        <p class="form-note" aria-live="polite">The form isn't live yet. Check back soon!</p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- Create event modal -->
+<div class="modal-overlay" id="createEventModal">
+  <div class="modal-card">
+    <div class="modal-header">
+      <h3>Create event</h3>
+      <button class="close-modal" id="closeCreateModalBtn" aria-label="Close">&times;</button>
+    </div>
+    <form id="createEventForm">
+      <div class="form-group">
+        <label for="evName">Event name</label>
+        <input type="text" id="evName" placeholder="e.g., First club meeting" required>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="evDate">Date</label>
+          <input type="date" id="evDate" required>
+        </div>
+        <div class="form-group">
+          <label for="evLocation">Location</label>
+          <input type="text" id="evLocation" placeholder="e.g., Room 204" required>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="evStart">Start time</label>
+          <input type="time" id="evStart" value="15:00" required>
+        </div>
+        <div class="form-group">
+          <label for="evEnd">End time</label>
+          <input type="time" id="evEnd" value="16:00" required>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="evDescription">Details</label>
+        <textarea id="evDescription" placeholder="What's happening, who it's for, anything to bring."></textarea>
+      </div>
+      <div class="modal-actions">
+        <div></div>
+        <div class="modal-actions-right">
+          <button type="button" class="btn-cancel" id="cancelCreateModalBtn">Cancel</button>
+          <button type="submit" class="btn-submit" id="createEventSubmitBtn">Publish event</button>
+        </div>
+      </div>
+      <p class="save-status" id="createEventStatus" aria-live="polite"></p>
+    </form>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap footer-wrap">
+    <div>
+      <div class="brand">Academic Support Network</div>
+      <div class="tagline">Supporting Teachers. Empowering Students.</div>
+    </div>
+    <div class="footer-meta">Parkway West High School</div>
+  </div>
+</footer>
+
+</body>
+</html>
