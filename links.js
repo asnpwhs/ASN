@@ -5,7 +5,7 @@
 // Google Form links for the Join / Request help buttons
 const FORM_LINKS = {
   join: "https://forms.gle/4eedwosEosP7xKu39",
-  request: "https://asnpwhs.github.io/ASN/calendar"
+  request: "https://jershonv.github.io/ASN/calendar.html"
 };
 
 // The ASN Apps Script web app. Used by the calendar and the events page.

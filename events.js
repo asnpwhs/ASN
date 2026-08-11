@@ -151,7 +151,7 @@
 
       const link = document.createElement('a');
       link.className = 'upcoming-link';
-      link.href = '/ASN/events' + encodeURIComponent(evt.id);
+      link.href = 'events.html#' + encodeURIComponent(evt.id);
       link.textContent = 'Learn more';
 
       row.append(text, link);
