@@ -12,7 +12,7 @@ const FORM_LINKS = {
 
 // The ASN Apps Script web app. Used by the calendar and the events page.
 // If you ever redeploy and the URL changes, change it here only.
-const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxZOITRAsTBec3h2j5We-jfaKqAMBDRCbB7gT23xVJkolqZzzPbMkujA44_R6Ttf35PSw/exec";
+const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyRIEs5uNdqiOtLtVbwsjNSmrkLmBBFazztcPo1wYGBKhKAD2MENZFrhJ5DqbbuOXtZXA/exec";
 
 // ============================================================
 // ADMIN CODE — typed before creating or deleting an event, and
