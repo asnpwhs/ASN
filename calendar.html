@@ -9,10 +9,10 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Graduate&family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css?v=6">
 <script>document.documentElement.classList.add('js');</script>
-<script src="links.js?v=4" defer></script>
-<script src="nav.js?v=4" defer></script>
+<script src="links.js?v=6" defer></script>
+<script src="nav.js?v=6" defer></script>
 <style>
   :root {
     --brand-primary: #7B1E3A;
@@ -288,146 +288,7 @@
     align-self: flex-start;
   }
 
-  /* Modal Styles */
-  .modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.4);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 2000;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.2s ease;
-  }
-
-  .modal-overlay.active {
-    opacity: 1;
-    pointer-events: auto;
-  }
-
-  .modal-card {
-    background: #ffffff;
-    border-radius: 12px;
-    width: 100%;
-    max-width: 480px;
-    padding: 1.5rem;
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-  }
-
-  .modal-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 1rem;
-  }
-
-  .modal-header h3 {
-    margin: 0;
-    font-size: 1.25rem;
-    color: var(--text-dark);
-  }
-
-  .close-modal {
-    background: none;
-    border: none;
-    font-size: 1.25rem;
-    cursor: pointer;
-    color: var(--text-muted);
-  }
-
-  .form-group {
-    margin-bottom: 1rem;
-  }
-
-  .form-row {
-    display: flex;
-    gap: 0.75rem;
-  }
-
-  .form-row .form-group {
-    flex: 1;
-  }
-
-  .form-group label {
-    display: block;
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: var(--text-dark);
-    margin-bottom: 0.35rem;
-  }
-
-  .form-group input, .form-group select, .form-group textarea {
-    width: 100%;
-    padding: 0.55rem;
-    border: 1px solid var(--border-color);
-    border-radius: 6px;
-    font-family: inherit;
-    font-size: 0.9rem;
-    box-sizing: border-box;
-  }
-  .form-group textarea { resize: vertical; min-height: 68px; }
-
-  .modal-card {
-    max-height: 90vh;
-    overflow-y: auto;
-  }
-
-  .save-status {
-    font-size: 0.8rem;
-    margin-top: 0.75rem;
-    min-height: 1.1em;
-  }
-  .save-status.ok   { color: #15803D; }
-  .save-status.err  { color: #DC2626; }
-  .save-status.busy { color: var(--text-muted); }
-
-
-  .modal-actions {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 1.5rem;
-  }
-
-  .modal-actions-right {
-    display: flex;
-    gap: 0.5rem;
-  }
-
-  .btn-cancel {
-    background: #F3F4F6;
-    border: none;
-    padding: 0.55rem 1rem;
-    border-radius: 6px;
-    font-weight: 600;
-    cursor: pointer;
-    color: var(--text-dark);
-  }
-
-  .btn-submit {
-    background: var(--brand-primary);
-    color: #ffffff;
-    border: none;
-    padding: 0.55rem 1rem;
-    border-radius: 6px;
-    font-weight: 600;
-    cursor: pointer;
-  }
-
-  .btn-danger {
-    background: #EF4444;
-    color: #ffffff;
-    border: none;
-    padding: 0.55rem 1rem;
-    border-radius: 6px;
-    font-weight: 600;
-    cursor: pointer;
-  }
+  /* Modal, form and button styles are in style.css */
 
   /* Event Signup View Styles */
   .event-details-box {
@@ -1173,10 +1034,7 @@ function showSheetWarning(code) {
         const li = document.createElement('li');
         const nameEl = document.createElement('strong');
         nameEl.textContent = s.name;
-        const mailEl = document.createElement('span');
-        mailEl.style.color = 'var(--text-muted)';
-        mailEl.textContent = s.email;
-        li.append(nameEl, mailEl);
+        li.appendChild(nameEl);
         volunteersList.appendChild(li);
       });
     }
@@ -1284,16 +1142,13 @@ function showSheetWarning(code) {
     const email = document.getElementById('volunteerEmail').value.trim();
 
     if (!evt.signups) evt.signups = [];
-
-    // Don't let the same person take two slots
-    if (evt.signups.some(s => String(s.email).toLowerCase() === email.toLowerCase())) {
-      setStatus(statusEl, "That email is already signed up for this task.", 'err');
-      return;
-    }
+    const countBefore = evt.signups.length;
 
     // Show it immediately so the button feels responsive. This is only a
     // preview — the sheet is re-read below and overwrites it either way.
-    evt.signups.push({ name, email });
+    // Duplicate signups are rejected by the Apps Script, which is now the
+    // only place that can see email addresses.
+    evt.signups.push({ name });
     renderCalendar();
 
     signupSubmitBtn.disabled = true;
@@ -1314,7 +1169,7 @@ function showSheetWarning(code) {
         await new Promise(r => setTimeout(r, 1500));
         const rows = await fetchSheetEvents();
         const row = rows.find(r => String(r.id) === String(evt.id));
-        saved = !!(row && (row.signups || []).some(s => s.email === email));
+        saved = !!(row && (row.signups || []).length > countBefore);
       }
 
       if (!saved) throw new Error('The signup did not appear in the sheet');
@@ -1326,12 +1181,11 @@ function showSheetWarning(code) {
       await loadCalendarEvents();
     } catch (err) {
       console.error('Could not post the signup:', err);
-      setStatus(
-        statusEl,
-        'Showing on this device only — it did not reach the ASN sheet. ' +
-        'Tell an ASN officer so they can add you.',
-        'err'
-      );
+      // A rejection carries the sheet's own reason (e.g. already signed up)
+      const reason = err.rejected
+        ? String(err.message).replace(/^Error:\s*/, '')
+        : 'It did not reach the ASN sheet. Tell an ASN officer so they can add you.';
+      setStatus(statusEl, reason, 'err');
     } finally {
       signupSubmitBtn.disabled = false;
       const keep = statusEl.textContent;

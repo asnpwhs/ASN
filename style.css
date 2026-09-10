@@ -1111,6 +1111,17 @@ section h2 {
   cursor: pointer;
 }
 .btn-submit:disabled { opacity: 0.6; cursor: default; }
+.btn-danger {
+  background: #DC2626;
+  color: #fff;
+  border: none;
+  padding: 0.55rem 1rem;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.btn-danger:hover { background: #B91C1C; }
+.btn-danger:disabled { opacity: 0.6; cursor: default; }
 .save-status { font-size: 0.8rem; margin-top: 0.75rem; min-height: 1.1em; }
 .save-status.ok   { color: #15803D; }
 .save-status.err  { color: #DC2626; }

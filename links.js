@@ -25,7 +25,26 @@ const SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxZOITRAsTBec3h2j5We
 // ============================================================
 const ADMIN_CODE = "empower";
 
+// ============================================================
+// CLUB EMAIL — shown on the "Got a different question?" line.
+// Leave blank and the site tells people to ask an officer at
+// school instead, so there is never a dead link.
+// ============================================================
+const CLUB_EMAIL = "";   // e.g. "asnparkwaywest@gmail.com"
+
 document.addEventListener("DOMContentLoaded", () => {
+  // Contact line: real mailto when an address is set, honest fallback if not
+  document.querySelectorAll("[data-club-email]").forEach(el => {
+    if (typeof CLUB_EMAIL !== "undefined" && CLUB_EMAIL) {
+      el.href = "mailto:" + CLUB_EMAIL;
+      el.textContent = CLUB_EMAIL;
+    } else {
+      const span = document.createElement("span");
+      span.textContent = "Grab any of us in the hall.";
+      el.replaceWith(span);
+    }
+  });
+
   document.querySelectorAll("[data-form]").forEach(btn => {
     const url = FORM_LINKS[btn.dataset.form];
     if (url) {
