@@ -2,10 +2,12 @@
 // ASN site settings — this is the only file you normally edit.
 // ============================================================
 
-// Google Form links for the Join / Request help buttons
+// Google Form links for the Join / Request help buttons.
+// "request" is a relative link so it keeps working if the site moves to a
+// different repo or URL. Don't put the full https://... address here.
 const FORM_LINKS = {
   join: "https://forms.gle/4eedwosEosP7xKu39",
-  request: "https://jershonv.github.io/ASN/calendar.html"
+  request: "calendar.html"
 };
 
 // The ASN Apps Script web app. Used by the calendar and the events page.
