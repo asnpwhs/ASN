@@ -573,6 +573,13 @@ section h2 {
   box-shadow: 0 14px 28px -8px rgba(25, 40, 55, 0.14);
   border-color: var(--accent-blue);
 }
+/* A grid left with one card shouldn't stretch into a full-width banner */
+.card-grid > .card:only-child {
+  max-width: 560px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 .card-icon { font-size: 1.75rem; margin-bottom: 16px; }
 .card h3 { font-size: 1.125rem; margin: 0 0 8px; color: var(--text-main); }
 .card p { color: var(--text-muted); font-size: 0.9375rem; margin: 0; line-height: 1.55; }

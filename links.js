@@ -30,7 +30,7 @@ const ADMIN_CODE = "empower";
 // Leave blank and the site tells people to ask an officer at
 // school instead, so there is never a dead link.
 // ============================================================
-const CLUB_EMAIL = "";   // e.g. "asnparkwaywest@gmail.com"
+const CLUB_EMAIL = "asnpwhs@gmail.com";
 
 document.addEventListener("DOMContentLoaded", () => {
   // Contact line: real mailto when an address is set, honest fallback if not

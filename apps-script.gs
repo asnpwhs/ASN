@@ -22,7 +22,8 @@ const CLUB_EVENTS_SHEET = 'ClubEvents';
 
 const EVENT_HEADERS      = ['id','title','teacher','description','room','date',
                             'startTime','endTime','type','slots','submittedAt'];
-const SIGNUP_HEADERS     = ['eventId','eventTitle','date','room','name','email','signedUpAt'];
+const SIGNUP_HEADERS     = ['eventId','eventTitle','date','room','name','email','signedUpAt',
+                            'status','hours'];
 const CLUB_EVENT_HEADERS = ['id','name','date','startTime','endTime','location',
                             'description','createdAt'];
 
@@ -37,6 +38,15 @@ function sheetFor(name, headers) {
 function asText(v, fmt) {
   if (v instanceof Date) return Utilities.formatDate(v, Session.getScriptTimeZone(), fmt);
   return v === null || v === undefined ? '' : String(v);
+}
+
+// "Sam Swiezynski" -> "Sam S."  Keeps the list useful without publishing
+// a full name next to a school email address.
+function publicName(name) {
+  const parts = String(name || '').trim().split(/\s+/).filter(String);
+  if (!parts.length) return 'Volunteer';
+  if (parts.length === 1) return parts[0];
+  return parts[0] + ' ' + parts[parts.length - 1].charAt(0).toUpperCase() + '.';
 }
 
 function jsonOut(value) {
@@ -73,7 +83,9 @@ function readTasks() {
     if (!o.eventId) return;
     const key = String(o.eventId);
     if (!signupsByEvent[key]) signupsByEvent[key] = [];
-    signupsByEvent[key].push({ name: o.name, email: o.email });
+    // Public feed: display name only. Emails stay in the sheet so student
+    // contact details are never readable from the website.
+    signupsByEvent[key].push({ name: publicName(o.name) });
   });
 
   return eventRows.filter(function (r) { return r[0]; }).map(function (r) {
@@ -130,9 +142,22 @@ function doPost(e) {
       ]);
 
     } else if (body.action === 'addSignup') {
-      sheetFor(SIGNUPS_SHEET, SIGNUP_HEADERS).appendRow([
+      const sh = sheetFor(SIGNUPS_SHEET, SIGNUP_HEADERS);
+      const rows = sh.getDataRange().getValues();
+      const head = rows.shift();
+      const cEvent = head.indexOf('eventId');
+      const cMail  = head.indexOf('email');
+
+      // The website can't check this any more, so check it here.
+      const already = rows.some(function (r) {
+        return String(r[cEvent]) === String(body.eventId) &&
+               String(r[cMail]).trim().toLowerCase() === String(body.email).trim().toLowerCase();
+      });
+      if (already) throw new Error('That email is already signed up for this task');
+
+      sh.appendRow([
         body.eventId, body.eventTitle, body.date, asRoom(body.room),
-        body.name, body.email, new Date()
+        body.name, body.email, new Date(), '', ''
       ]);
 
     } else if (body.action === 'deleteEvent') {
